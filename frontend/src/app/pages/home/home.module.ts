@@ -1,21 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// Custom elements imports
 import { HomeRoutingModule } from './home-routing.module';
 import { GuestComponent } from './components/guest/guest.component';
 import { UserComponent } from './components/user/user.component';
 import { HomeComponent } from './home.component';
+import { ProductivityComponent } from './components/_productivity/productivity.component';
+import { CampaignComponent } from './components/_campaign/campaign.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
   declarations: [
     GuestComponent,
     UserComponent,
-    HomeComponent
+    HomeComponent,
+    ProductivityComponent,
+    CampaignComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+
+    ComponentsModule
   ]
 })
 export class HomeModule { }
