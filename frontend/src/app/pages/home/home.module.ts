@@ -9,6 +9,7 @@ import { HomeComponent } from './home.component';
 import { ProductivityComponent } from './components/_productivity/productivity.component';
 import { CampaignComponent } from './components/_campaign/campaign.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { CampagnBottomComponent } from './components/campagn-bottom/campagn-bottom.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     UserComponent,
     HomeComponent,
     ProductivityComponent,
-    CampaignComponent
+    CampaignComponent,
+    CampagnBottomComponent
   ],
   imports: [
     CommonModule,

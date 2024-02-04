@@ -1,0 +1,372 @@
+.campaign__container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.campaign__wrapper {
+  display: flex;
+}
+
+.campaign__left {
+  padding-top: 3px;
+  display: flex;
+  flex-direction: column;
+  width: 8.33333333%;
+}
+
+.circle__container {
+  margin: 0 auto;
+  height: 21px;
+}
+
+.circle__dot {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.bracket__container {
+  height: 28px;
+  margin: 16px auto;
+}
+
+.bracket__wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.bracket__shadow {
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #7C72FF;
+  filter: blur(18px);
+}
+
+.vertical-space {
+  margin-bottom: 8px;
+}
+
+.campaign__right {
+  padding-top: 1rem;
+  padding-left: 8px;
+  margin-top: calc(-1 * 24px);
+  width: 91.66666663%;
+  position: relative;
+  z-index: 1;
+}
+
+.right-top-space {
+  margin-bottom: 0.45rem;
+  display: block;
+}
+
+.top-word-first {
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 51.5px;
+  letter-spacing: 0.05rem;
+  font-feature-settings: unset;
+  word-break: keep-all;
+  word-wrap: break-word;
+  color: white;
+}
+
+.top-word-first span {
+  font-family: inherit;
+  font-size: .8em;
+}
+
+.top-word-second {
+  margin-bottom: 1rem;
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #7d8590;
+  letter-spacing: 0.41px;
+}
+
+.top-button-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-button-container {
+  width: 100%;
+}
+
+.signup-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email-signup-wrapper {
+  margin-bottom: 1rem;
+  flex: auto;
+  width: 100%;
+}
+
+.email-signup-input {
+  width: 100%;
+  height: 3rem;
+  padding: 5px 12px;
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1f2328;
+  vertical-align: middle;
+  background-color: white;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+}
+
+.email-signup-button {
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(180deg, rgba(183, 52, 179, 0.15) 0%, rgba(164, 46, 156, 0) 100%), #6e40c9;
+  color: white;
+  display: inline-block;
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: .375rem;
+  cursor: pointer;
+  transition: box-shadow .2s, outline .2s ease;
+}
+
+.email-signup-button:hover {
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.15), 0 100px 80px rgba(255, 255, 255, 0.02), 0 42px 33px rgba(255, 255, 255, 0.024), 0 22px 18px rgba(255, 255, 255, 0.028), 0 12px 10px rgba(255, 255, 255, 0.034), 0 7px 5px rgba(255, 255, 255, 0.04), 0 3px 2px rgba(255, 255, 255, 0.07);
+}
+
+.top-button-separator {
+  margin-bottom: 1rem;
+  border-top: max(1px, 0.0625rem) solid #30363d;
+}
+
+.trial-button {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: .375rem;
+  box-shadow: #bc8cff 0 0 0 1px inset;
+  cursor: pointer;
+  transition: box-shadow .2s, outline .2s ease;
+  text-decoration: none;
+}
+
+.trial-button svg {
+  display: inline-block;
+  overflow: visible;
+  vertical-align: text-bottom;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  transition: transform .2s;
+  transform: translateX(0);
+}
+
+.trial-button svg:last-child {
+  stroke-dasharray: 10;
+  stroke-dashoffset: 10;
+  transition: stroke-dashoffset .2s;
+}
+
+.trial-button:hover {
+  box-shadow: white 0 0 0 2px inset;
+}
+
+.trial-button:hover svg {
+  transform: translateX(4px);
+}
+
+.trial-button:hover svg:last-child {
+  stroke-dashoffset: 20;
+}
+
+.company__container {
+  margin: 4rem 0;
+  width: 100%;
+}
+
+.company__container p {
+  margin-bottom: 10px;
+  display: block;
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #6e7681;
+  letter-spacing: 0.35px;
+  word-wrap: break-word;
+}
+
+.company-image-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.company-image {
+  margin: 1rem 0;
+}
+
+.image-first-seperator,
+.image-second-seperator {
+  width: 100%;
+}
+
+@media (min-width: 544px) {
+  .vertical-space {
+      margin-bottom: 40px;
+  }
+
+  .campaign__container {
+      padding-top: 14px;
+  }
+
+  .campaign__wrapper {
+      padding-top: 8px;
+      display: flex;
+  }
+
+  .campaign__left {
+      padding-top: 0;
+  }
+
+  .circle__dot {
+      margin-bottom: 2px;
+  }
+
+  .campaign__right {
+      padding-top: 0;
+      padding-left: 0;
+  }
+
+  .right-top-space {
+      margin-bottom: 2.5rem;
+  }
+
+  .image-first-seperator {
+      display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .top-word-first {
+      font-size: 72px;
+      line-height: 75px;
+  }
+
+  .top-word-second {
+      margin-bottom: 6rem;
+  }
+
+  .top-button-wrapper {
+      flex-direction: row;
+  }
+
+  .signup-button-container {
+      width: 58.33333331%;
+  }
+
+  .signup-button-wrapper {
+      flex-direction: row;
+  }
+
+  .email-signup-button,
+  .email-signup-wrapper {
+      margin-bottom: 0;
+  }
+
+  .email-signup-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+  }
+
+  .email-signup-button {
+      width: auto;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      letter-spacing: 0.1px;
+  }
+
+  .top-button-separator {
+      margin-bottom: 0;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      border-left: max(1px, 0.0625rem) solid #30363d;
+  }
+
+  .trial-button {
+      width: auto;
+      letter-spacing: 0.25px;
+  }
+
+  .company__container {
+      margin: 6rem 0;
+  }
+
+  .company__container p {
+      font-size: 20px;
+      line-height: 28px;
+  }
+
+  .company-image-container {
+      justify-content: space-between;
+  }
+
+  .image-second-seperator {
+      display: none;
+  }
+}
+
+@media (min-width: 1012px) {
+  .campaign__container {
+      padding-top: 28px;
+  }
+
+  .top-word-first {
+      font-size: 80px;
+      line-height: 79px;
+  }
+
+  .top-word-second {
+      font-size: 24px;
+      line-height: 32px;
+  }
+
+  .signup-button-container {
+      width: 41.66666665%;
+  }
+
+  .company-image-container {
+      width: 91.66666663%;
+  }
+}
