@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ImageCompanyUrl } from 'src/app/core/data/imageUrl';
 
 @Component({
   selector: 'app-campaign',
@@ -7,6 +6,5 @@ import { ImageCompanyUrl } from 'src/app/core/data/imageUrl';
   styleUrls: ['./campaign.component.scss']
 })
 export class CampaignComponent {
-  compagnyImageUrl!: ImageCompanyUrl;
 
 }
