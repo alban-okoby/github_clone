@@ -6,19 +6,35 @@
   <div role="main">
     <div id="">
       <div class="form-div px-3">
-        <form>
+        <form [formGroup]="loginForm">
           <div class="form-header">
             <h1>Sign in to GitHub</h1>
           </div>
           <div class="form-body">
             <label>Username or email address</label>
-            <input class="form-control input-block" name="login">
+            <input class="form-control input-block" formControlName="email"
+            [(ngModel)]="loginModel.email">
             <label>Password<a href="#" class="label-link">Forgot password?</a></label>
-            <input class="form-control input-block" type="password" name="password">
-            <input class="button" type="submit" value="Sign in">
-          </div></form>
+            <input class="form-control input-block" type="password" name="password"
+            formControlName="password" [(ngModel)]="loginModel.password">
+            <button [disabled]="!loginForm.valid" class="button" type="submit" value="Sign in"
+            (click)="submit()"
+            > Sign in </button>
+          </div>
+        </form>
         <p class="create-account">New to Github ? <a href="#">Create an account</a>.</p>
       </div>
+
+      <ng-template #formError let-control="control" let-message="message" let-validation="validation">
+        <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+          <div class="fv-plugins-message-container">
+            <span role="alert">
+              {{ message }}
+            </span>
+          </div>
+        </ng-container>
+      </ng-template>
+
     </div>
   </div>
   <div class="site-footer">

@@ -82,7 +82,8 @@ export class SignInComponent {
         if (priorityRole) {
           localStorage.setItem('token', res.accessToken);
           localStorage.setItem('c_uRs', priorityRole);
-
+          this.isLoggedIn = true;
+          localStorage.setItem('isLoggedIn', 'true')
           this.router.navigateByUrl('/');
 
           this.showSuccessMessage(res.user.displayName);
