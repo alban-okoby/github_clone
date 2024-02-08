@@ -30,6 +30,7 @@ This project can run anywhere
 * Access frontend project directory: `cd github_clone/frontend`
 * Install dependencies `npm i`
 * Start project `npm start` or `ng serve` if you have angular on your device
+* Go to `localhost:4200` by default on your browser.
   #### Backend project
   * Access backend project directory: `cd github_clone/backend/github_clone_api`
   * Install dependancies : `mvn install package` or `mvn clean install`
@@ -37,6 +38,9 @@ This project can run anywhere
 
 ## File Descriptions
 ## Examples of use
+By default the api will automaticaly create Credentials to login:
+  - "email": `admin@github-clone.com`,
+  - "password": `admin@1234`
 ## Bugs
 No known bugs at this time. 
 
