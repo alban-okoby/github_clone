@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 // Custom elements imports
 import { HomeRoutingModule } from './home-routing.module';
-import { GuestComponent } from './components/guest/guest.component';
-import { UserComponent } from './components/user/user.component';
+import { GuestComponent } from './guest/guest.component';
+import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home.component';
 import { ProductivityComponent } from './components/_productivity/productivity.component';
 import { CampaignComponent } from './components/_campaign/campaign.component';

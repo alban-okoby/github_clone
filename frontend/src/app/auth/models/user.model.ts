@@ -1,0 +1,16 @@
+import { AuthModel } from './auth.model';
+
+export class UserModel extends AuthModel {
+  id!: number;
+  roles: any[] = [];
+  occupation: string = '';
+  companyName: string = '';
+  phone: string = '';
+  firstname: string = '';
+  lastname: string = '';
+  website: string = '';
+
+  // account information
+  language: string = '';
+  timeZone: string = '';
+}
