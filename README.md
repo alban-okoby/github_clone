@@ -17,17 +17,23 @@
 This project can run anywhere
 
 ## Technologies
-* Frontend: [ HTML, CSS, JavaScript & TypeScript, Angular]
-* Backend: [Java | Spring Boot]
-* Database: [MySQL]
-* Version Control: [Git]
+* Frontend: [ HTML, CSS, JavaScript & TypeScript, Angular 15+]
+* Backend: [Java 11 or higher | Spring Boot 2+]
+* Database: [MySQL 8+](https://dev.mysql.com/downloads/installer/)
+* Version Control: [Install Git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git)
+* Maven: [Install Maven](https://maven.apache.org/install.html)
+* Npm: [Install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ## Installation
-* Clone this repository: `git clone "https://github.com/alban-okoby/github_clone.git"`
-* Access project directory: `cd github_clone`
+* Clone this repository: `git clone https://github.com/alban-okoby/github_clone.git`
+  #### Frontend project
+* Access frontend project directory: `cd github_clone/frontend`
 * Install dependencies `npm i`
-* Start project `npm start`
-
+* Start project `npm start` or `ng serve` if you have angular on your device
+  #### Backend project
+  * Access backend project directory: `cd github_clone/backend/github_clone_api`
+  * Install dependancies : `mvn install package` or `mvn clean install`
+  * Run api with `java -jar target/github-clone-1.1.0.jar`
 
 ## File Descriptions
 ## Examples of use
