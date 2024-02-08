@@ -15,11 +15,6 @@ import com.digitalsouag.dto.UserInfo;
 import com.digitalsouag.model.Role;
 import com.digitalsouag.model.User;
 
-/**
- * 
- * @author Chinna
- *
- */
 public class GeneralUtils {
 
 	public static List<SimpleGrantedAuthority> buildSimpleGrantedAuthorities(final Set<Role> roles) {

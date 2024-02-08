@@ -7,10 +7,6 @@ import com.digitalsouag.validator.PasswordMatches;
 
 import lombok.Data;
 
-/**
- * @author Chinna
- * @since 26/3/18
- */
 @Data
 @PasswordMatches
 public class SignUpRequest {

@@ -12,11 +12,6 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.digitalsouag.util.GeneralUtils;
 
-/**
- * 
- * @author Chinna
- *
- */
 public class LocalUser extends User implements OAuth2User, OidcUser {
 
 	/**

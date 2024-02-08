@@ -7,6 +7,8 @@ import java.util.UUID;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
+import com.digitalsouag.model.VerificationToken;
+import com.digitalsouag.repo.VerificationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +17,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.digitalsouag.config.AppConstants;
 import com.digitalsouag.config.CurrentUser;
@@ -58,6 +56,9 @@ public class AuthController {
 	TokenProvider tokenProvider;
 
 	@Autowired
+	private VerificationTokenRepository verificationTokenRepository;
+
+	@Autowired
 	private QrDataFactory qrDataFactory;
 
 	@Autowired
@@ -87,7 +88,7 @@ public class AuthController {
 			userService.createVerificationTokenForUser(user, token);
 			mailService.sendVerificationToken(token, user);
 			if (signUpRequest.isUsing2FA()) {
-				QrData data = qrDataFactory.newBuilder().label(user.getEmail()).secret(user.getSecret()).issuer("JavaChinna").build();
+				QrData data = qrDataFactory.newBuilder().label(user.getEmail()).secret(user.getSecret()).issuer("John").build();
 				// Generate the QR code image data as a base64 string which can
 				// be used in an <img> tag:
 				String qrCodeImage = getDataUriForImage(qrGenerator.generate(data), qrGenerator.getImageMimeType());
@@ -113,10 +114,19 @@ public class AuthController {
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, true, GeneralUtils.buildUserInfo(user)));
 	}
 
-	@PostMapping("/token/verify")
-	public ResponseEntity<?> confirmRegistration(@NotEmpty @RequestBody String token) {
-		final String result = userService.validateVerificationToken(token);
-		return ResponseEntity.ok().body(new ApiResponse(true, result));
+	@GetMapping("/token/verify")
+	public ResponseEntity<?> confirmRegistration(@NotEmpty @RequestParam String token) {
+		VerificationToken tokenValue = this.verificationTokenRepository.findByToken(token);
+
+		if (tokenValue != null) {
+			userService.validateVerificationToken(token);
+			String buttonUrl =String.format("<a href=\"localhost:4200/auth/signin\" class=\"confirmation-button\">" +
+					"Login now </a>");
+			return ResponseEntity.ok().body("Your GC (Github Clone) Account is activated successfully ✅." + buttonUrl);
+		}
+		else {
+			return ResponseEntity.ok().body("Error ❌, this link are expired or doesn't exist.");
+		}
 	}
 
 	// user activation - verification

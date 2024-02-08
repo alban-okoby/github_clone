@@ -23,10 +23,6 @@ import com.digitalsouag.model.User;
 
 import freemarker.template.Configuration;
 
-/**
- * @author hp
- *
- */
 @Service
 public class MailServiceImpl implements MailService {
 
@@ -34,7 +30,7 @@ public class MailServiceImpl implements MailService {
 	private static final String SUPPORT_EMAIL = "support.email";
 	public static final String LINE_BREAK = "<br>";
 	public final static String BASE_URL = "baseUrl";
-	
+
 	@Autowired
 	private MessageService messageService;
 
@@ -50,12 +46,17 @@ public class MailServiceImpl implements MailService {
 	@Autowired
 	AppProperties appProperties;
 
+	private String buttonUrl;
 	@Async
 	@Override
 	public void sendVerificationToken(String token, User user) {
-		final String confirmationUrl = appProperties.getClient().getBaseUrl() + "verify?token=" + token;
+		final String confirmationUrl = appProperties.getClient().getBaseUrl() + "api/v1/auth/token/verify?token=" + token;
+		buttonUrl =String.format("<div style=\"text-align: center; margin-top: 20px; margin-bottom: 5px; color: white;\">" +
+				"<a href=\"%sapi/v1/auth/token/verify?token=%s\" class=\"confirmation-button\">" +
+				"Finalize my registration</a>" +
+				"</div>", appProperties.getClient().getBaseUrl(), token);
 		final String message = messageService.getMessage("message.mail.verification");
-		sendHtmlEmail("Registration Confirmation", message + LINE_BREAK + confirmationUrl, user);
+		sendHtmlEmail("Github Clone (GC) - Confirm my registration", message + LINE_BREAK + buttonUrl + LINE_BREAK + confirmationUrl, user);
 	}
 
 	private String geFreeMarkerTemplateContent(Map<String, Object> model, String templateName) {
@@ -73,6 +74,7 @@ public class MailServiceImpl implements MailService {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("name", user.getDisplayName());
 		model.put("msg", msg);
+		model.put("buttonUrl", buttonUrl);
 		model.put("title", subject);
 		model.put(BASE_URL, appProperties.getClient().getBaseUrl());
 		try {

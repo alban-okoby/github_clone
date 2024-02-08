@@ -3,10 +3,6 @@
  */
 package com.digitalsouag.config;
 
-/**
- * @author Chinna
- *
- */
 public class AppConstants {
 	public static final String TOKEN_INVALID = "INVALID";
 	public static final String TOKEN_EXPIRED = "EXPIRED";

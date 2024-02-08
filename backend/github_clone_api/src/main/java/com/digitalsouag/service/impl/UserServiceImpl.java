@@ -35,10 +35,6 @@ import com.digitalsouag.util.GeneralUtils;
 
 import dev.samstevens.totp.secret.SecretGenerator;
 
-/**
- * @author Chinna
- * @since 26/3/18
- */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -85,7 +81,7 @@ public class UserServiceImpl implements UserService {
 		final HashSet<Role> roles = new HashSet<Role>();
 		roles.add(roleRepository.findByName(Role.ROLE_USER));
 		user.setRoles(roles);
-		user.setProvider(formDTO.getSocialProvider().getProviderType());
+//		user.setProvider(formDTO.getSocialProvider().getProviderType());
 		user.setEnabled(false);
 		user.setProviderUserId(formDTO.getProviderUserId());
 		if (formDTO.isUsing2FA()) {
@@ -171,6 +167,7 @@ public class UserServiceImpl implements UserService {
 			return AppConstants.TOKEN_EXPIRED;
 		}
 
+		// Enable user and remove her token
 		user.setEnabled(true);
 		tokenRepository.delete(verificationToken);
 		userRepository.save(user);

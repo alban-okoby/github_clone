@@ -1,2 +1,2 @@
-<img src="https://www.javachinna.com/wp-content/uploads/2020/02/cropped-JavaChinna_logo.jpg" alt="https://javachinna.com" style="display: block;" width="130" height="50"/>
-<h3><span style="border-bottom: 4px solid #32CD32;">${title}</span></h3>
+<img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="github logo" style="display: block;" width="130" height="120"/>
+<h1><span style="font-size: 24px;">${title}</span></h1>
