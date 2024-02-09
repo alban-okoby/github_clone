@@ -6,6 +6,7 @@ export class UserModel extends AuthModel {
   occupation: string = '';
   companyName: string = '';
   phone: string = '';
+  username!: string;
   firstname: string = '';
   lastname: string = '';
   website: string = '';

@@ -1,5 +1,9 @@
 export class AuthModel {
-  username: string = '';
-  password: string = '';
-  email: string = '';
+  email!: string;
+  password!: string;
+}
+
+export class RegisterModel extends AuthModel {
+  matchingPassword!: string;
+  displayName!: string;
 }

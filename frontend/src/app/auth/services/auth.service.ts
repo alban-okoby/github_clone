@@ -23,6 +23,16 @@ export class AuthService {
     );;
   }
 
+  SignUp(userData: any) {
+    return this.http.post(`http://localhost:8090/api/v1/auth/signup`, userData, {headers: environment.headers} )
+    .pipe(
+      catchError((error: any) => {
+        console.error('SignUp failed:', error);
+        throw error;
+      })
+    );;
+  }
+
   currentUser() {
     const cu = this.http.get(`${this.API_URL}/current-user`, {headers: environment.headers});
     return cu;

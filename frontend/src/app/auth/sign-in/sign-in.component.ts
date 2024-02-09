@@ -132,7 +132,7 @@ export class SignInComponent {
     Toast.fire({
       icon: 'success',
       title: `Welcome back 🖐🏽 ${username}`,
-      timer: 5000,
+      timer: 15000,
     });
   }
 

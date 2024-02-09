@@ -39,6 +39,12 @@ public class SignUpRequest {
 		this.matchingPassword = matchingPassword;
 		this.socialProvider = socialProvider;
 	}
+	public SignUpRequest(String displayName, String email, String password, String matchingPassword) {
+		this.displayName = displayName;
+		this.email = email;
+		this.password = password;
+		this.matchingPassword = matchingPassword;
+	}
 
 	public static Builder getBuilder() {
 		return new Builder();
