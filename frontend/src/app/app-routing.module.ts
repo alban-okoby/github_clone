@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { PagesModule } from './pages/pages.module';
+import { AlreadyConnectedGuard } from './auth/guard/already-auth.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
+    canActivate: [AlreadyConnectedGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   { path: '', redirectTo: '', pathMatch: 'full' },

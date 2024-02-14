@@ -17,7 +17,7 @@
             <label>Password<a href="#" class="label-link">Forgot password?</a></label>
             <input class="form-control input-block" type="password" name="password"
             formControlName="password" [(ngModel)]="loginModel.password">
-            <button [disabled]="!loginForm.valid" class="button" type="submit" value="Sign in"
+            <button [disabled]="!loginForm.valid || isRequesting" class="button" type="submit" value="Sign in"
             (click)="submit()"
             > Sign in </button>
           </div>

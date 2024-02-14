@@ -93,6 +93,7 @@ export class SignInComponent {
           }, 1500);
         } else {
           setTimeout(() => {
+            this.badCredentials();
             this.isRequesting = false;
             this.showErorMessage();
             setTimeout(() => {}, 300);
