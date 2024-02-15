@@ -34,9 +34,8 @@ export class SignInComponent {
     private authService: AuthService,
     // private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
-  ) // private commonService: CommonService
-  {
+    private router: Router // private commonService: CommonService
+  ) {
     // this.isLoading$ = this.authService.isLoading$;
     // redirect to home if already logged in
     // if (this.authService.currentUserValue) {
@@ -68,38 +67,36 @@ export class SignInComponent {
   }
 
   submit() {
+    this.isRequesting = true;
     if (this.loginForm.valid) {
-      this.isRequesting = true;
-      this.authService.login(this.loginModel).subscribe((res: any) => {
-        const roles = res.user.roles;
-        const sortedRoles = roles.sort((a: string, b: string) => {
-          const priorityA = RolePriorities[a as UserRoles];
-          const priorityB = RolePriorities[b as UserRoles];
-          return priorityA - priorityB;
-        });
+      this.authService.login(this.loginModel).subscribe({
+        next: (res :any) => {
+          const roles = res.user.roles;
+          const sortedRoles = roles.sort((a: string, b: string) => {
+            const priorityA = RolePriorities[a as UserRoles];
+            const priorityB = RolePriorities[b as UserRoles];
+            return priorityA - priorityB;
+          });
 
-        const priorityRole = sortedRoles[0];
-        if (priorityRole) {
-          localStorage.setItem('token', res.accessToken);
-          localStorage.setItem('c_uRs', priorityRole);
-          this.isLoggedIn = true;
-          localStorage.setItem('isLoggedIn', 'true')
-          this.router.navigateByUrl('/');
+          const priorityRole = sortedRoles[0];
+          if (priorityRole) {
+            localStorage.setItem('token', res.accessToken);
+            localStorage.setItem('c_uRs', priorityRole);
+            localStorage.setItem('isLoggedIn', 'true');
 
-          this.showSuccessMessage(res.user.displayName);
 
+            this.router.navigateByUrl('/');
+            setTimeout(() => {
+              this.showSuccessMessage(res.user.displayName);
+            }, 1500);
+          }
+        },
+        error: (err) => {
           setTimeout(() => {
-            // window.location.reload();
-          }, 1500);
-        } else {
-          setTimeout(() => {
-            this.badCredentials();
             this.isRequesting = false;
             this.showErorMessage();
-            setTimeout(() => {}, 300);
-            // this.badCredentials();
           }, 1100);
-        }
+        },
       });
     }
   }
