@@ -10,6 +10,7 @@ export class UserModel extends AuthModel {
   firstname: string = '';
   lastname: string = '';
   website: string = '';
+  imageUrl : string = '';
 
   // account information
   language: string = '';

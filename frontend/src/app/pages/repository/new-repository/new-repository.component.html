@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Create a New Repository</h1>
+  <form>
+    <div class="d-flex row">
+      <div class="left col-md-5">
+        <label for="repo-name">Owner <span class="required">*</span></label>
+        <input type="text" id="repo-owner" name="repo-owner" [disabled]="true" value="{{connectedUser}}">
+      </div>
+      <i class="center col-md-1">/</i>
+      <div class="right col-md-5">
+        <label for="repo-name">Repository Name <span class="required">*</span></label>
+        <input type="text" id="repo-name" name="repo-name">
+      </div>
+    </div>
+
+    <label for="description">Description(optionnal)</label>
+    <textarea id="description" name="description" rows="4" placeholder="Enter description"></textarea>
+
+    <label for="visibility">Visibility</label>
+    <select id="visibility" name="visibility" class="form-select">
+      <option value="public">Public</option>
+      <option value="private">Private</option>
+    </select>
+
+    <input type="submit" value="Create repository">
+  </form>
+</div>

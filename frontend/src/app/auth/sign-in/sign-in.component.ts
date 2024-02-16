@@ -11,6 +11,7 @@ import { Observable, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 import { RolePriorities, UserRoles } from '../models/roles.model';
+import { UserModel } from '../models/user.model';
 
 @Component({
   selector: 'app-sign-in',
@@ -26,6 +27,7 @@ export class SignInComponent {
   loginModel!: any;
   roles: string[] = [];
   isLoggedIn!: boolean;
+  connectedUser!: UserModel;
 
   private unsubscribe: Subscription[] = [];
 
@@ -83,7 +85,7 @@ export class SignInComponent {
             localStorage.setItem('token', res.accessToken);
             localStorage.setItem('c_uRs', priorityRole);
             localStorage.setItem('isLoggedIn', 'true');
-
+            localStorage.setItem('c_uM', res.user.email);
 
             this.router.navigateByUrl('/');
             setTimeout(() => {
@@ -130,7 +132,7 @@ export class SignInComponent {
     Toast.fire({
       icon: 'success',
       title: `Welcome back 🖐🏽 ${username}`,
-      timer: 15000,
+      timer: 7000,
     });
   }
 
