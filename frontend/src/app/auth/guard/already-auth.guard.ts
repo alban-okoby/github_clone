@@ -16,7 +16,7 @@ export class AlreadyConnectedGuard implements CanActivate {
     if (
       localStorage.getItem('c_uRs') === 'ROLE_USER' || localStorage.getItem('c_uRs') === 'ROLE_ADMIN'
     ) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
       setTimeout(() => {
         // window.location.reload();
         return false;

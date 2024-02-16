@@ -7,8 +7,7 @@ export const authGuard = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (localStorage.getItem('fuckYou') == 'true' && (localStorage.getItem('qsdfghjklmpoiuytreza') == 'ROLE_ADMIN' || localStorage.getItem('qsdfghjklmpoiuytreza') == 'ROLE_NORMAL') ||
-  localStorage.getItem('qsdfghjklmpoiuytreza') == 'HEAD') {
+  if (localStorage.getItem('isLoggedIn') == 'true' && (localStorage.getItem('c_uRs') == 'ROLE_ADMIN' || localStorage.getItem('c_uRs') == 'ROLE_USER') && localStorage.getItem('isLoggedIn') == 'true') {
     return true;
 
   }

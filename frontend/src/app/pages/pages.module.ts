@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from '../components/components.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     PagesRoutingModule,
     HttpClientModule,
+    ComponentsModule,
 
   ]
 })

@@ -5,6 +5,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { NavbarLinksComponent } from './layout/navbar/navbar-links/navbar-links.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './layout/header/header.component';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    NavbarLinksComponent
+    NavbarLinksComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { RouterModule } from '@angular/router';
   exports: [
     FooterComponent,
     NavbarComponent,
-    NavbarLinksComponent
+    NavbarLinksComponent,
+    HeaderComponent
   ]
 })
 export class ComponentsModule { }
