@@ -22,9 +22,6 @@ import lombok.Setter;
 @Setter
 @MappedSuperclass
 public abstract class AbstractToken implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private static final int EXPIRATION = 60 * 24;
