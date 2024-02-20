@@ -11,7 +11,6 @@ export class AuthService {
 
   API_URL = environment.GITHUB_CLONE_API_URL + '/auth';
   isLoggedIn = false;
-  // http://localhost:8081/api/v1/user/me
 
   login(userData: any) {
     return this.http.post(`${this.API_URL}/signin`, userData, {headers: environment.headers} )

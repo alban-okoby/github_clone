@@ -1,0 +1,19 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { catchError } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { GRepository } from '../model/GRepository';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ReposirotyService {
+
+  constructor(private http: HttpClient) {}
+
+  API_URL = environment.GITHUB_CLONE_API_URL + '/repository';
+
+  createRepository(repository: GRepository, userId: any) {
+    return this.http.post(`${this.API_URL}/`, {headers: environment.headers} )
+  }
+}

@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
     PagesRoutingModule,
     HttpClientModule,
     ComponentsModule,
+    RouterModule
 
   ]
 })

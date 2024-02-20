@@ -1,0 +1,20 @@
+<div class="main-container">
+  <div  class="main-card  card" style="width: 100%" >
+    <div class="card-header">
+    <h2 mat-dialog-title> Suppression 🔴! Action irréversible </h2>
+  </div>
+  <div class="card-body" style="height: 50px!important">
+    <div>
+      {{deleteMessage()}}
+    </div>
+  </div>
+  <div class="card-footer">
+    <div style="width:100%">
+      <div style="float: right">
+        <button class="btn btn-danger mr-2" [mat-dialog-close]="true" cdkFocusInitial>Supprimer</button>
+        <button class="btn btn-secondary" (click)="onNoClick()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
