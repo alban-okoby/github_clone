@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import com.digitalsouag.dto.UserInfo;
 import com.digitalsouag.service.MailService;
 import com.digitalsouag.service.UserService;
 import org.apache.commons.lang3.StringUtils;
@@ -98,6 +99,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User findTheUserByEmail(String email) {
+		return userRepository.findUserByEmail(email);
+	}
+
+	@Override
+	public User findUserByUsername(String username) {
+		return userRepository.findUserByUsername(username);
+	}
+
+	@Override
 	@Transactional
 	public LocalUser processUserRegistration(String registrationId, Map<String, Object> attributes, OidcIdToken idToken, OidcUserInfo userInfo) {
 		OAuth2UserInfo oAuth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(registrationId, attributes);
@@ -135,7 +146,12 @@ public class UserServiceImpl implements UserService {
 	public Optional<User> findUserById(Long id) {
 		return userRepository.findById(id);
 	}
-	
+
+	@Override
+	public Optional<UserInfo> findUserByUserId(Long userId) {
+		return Optional.empty();
+	}
+
 	@Override
 	public void createVerificationTokenForUser(final User user, final String token) {
 		final VerificationToken myToken = new VerificationToken(token, user);

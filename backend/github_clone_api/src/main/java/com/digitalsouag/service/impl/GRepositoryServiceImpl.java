@@ -1,6 +1,8 @@
 package com.digitalsouag.service.impl;
 
 import com.digitalsouag.dto.GRepositoryDTO;
+import com.digitalsouag.dto.UserDTO;
+import com.digitalsouag.dto.UserInfo;
 import com.digitalsouag.model.GRepository;
 import com.digitalsouag.model.User;
 import com.digitalsouag.repo.GRepositoryRepo;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,9 +49,18 @@ public class GRepositoryServiceImpl implements GRepositoryService {
     }
 
     @Override
+    public List<GRepositoryDTO> getRepositoriesByUsername(String username) {
+        return gRepo.findGRepositoriesByUsername(username)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public GRepositoryDTO createRepository(GRepositoryDTO repositoryDTO, Long userId) {
         User user = userService.findUserById(userId).get();
-        repositoryDTO.setUser(user);
+        UserDTO userInfo = userToDTO(user);
+        repositoryDTO.setUser(userInfo);
         GRepository entity = convertToEntity(repositoryDTO);
         return convertToDTO(gRepo.save(entity));
     }
@@ -70,6 +82,17 @@ public class GRepositoryServiceImpl implements GRepositoryService {
         gRepo.deleteById(id);
     }
 
+    private UserDTO userToDTO(User user) {
+        UserDTO userInfo = new UserDTO();
+        userInfo.setDisplayName(user.getDisplayName());
+        userInfo.setEmail(user.getEmail());
+        userInfo.setRoles(user.getRoles());
+        userInfo.setUsername(user.getUsername());
+        return modelMapper.map(user, UserDTO.class);
+    }
+    private User dtoToUser(UserDTO userDTO) {
+        return modelMapper.map(userDTO, User.class);
+    }
     private GRepositoryDTO convertToDTO(GRepository entity) {
         return modelMapper.map(entity, GRepositoryDTO.class);
     }

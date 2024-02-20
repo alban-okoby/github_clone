@@ -4,6 +4,8 @@ import com.digitalsouag.config.AppConstants;
 import com.digitalsouag.dto.GRepositoryDTO;
 import com.digitalsouag.service.GRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,14 +22,16 @@ public class GRepositoryController {
         return repositoryService.getAllRepositories();
     }
 
-    @GetMapping("/{id}")
-    public GRepositoryDTO getRepositoryById(@PathVariable Long id) {
-        return repositoryService.getRepositoryById(id);
+    @GetMapping("/{username}/{repositoryName}")
+    public GRepositoryDTO getRepositoriesByUsernameAndRepositoryName(@PathVariable String username,
+                                                                     @PathVariable String repositoryName) {
+        return repositoryService.getRepositoryByUsernameAndRepositoryName(username, repositoryName);
     }
 
-    @GetMapping("/{username}/{repositoryName}")
-    public GRepositoryDTO getRepositoryByUsernameAndRepositoryName(@PathVariable String username, @PathVariable String repositoryName) {
-        return repositoryService.getRepositoryByUsernameAndRepositoryName(username, repositoryName);
+    @GetMapping("/{username}")
+    public ResponseEntity<List<GRepositoryDTO>> getRepositoriesByUsername(@PathVariable("username") String username) {
+        List<GRepositoryDTO> repoList = this.repositoryService.getRepositoriesByUsername(username);
+        return new ResponseEntity(repoList, HttpStatus.OK);
     }
 
     @PostMapping("/{userId}")
@@ -44,4 +48,5 @@ public class GRepositoryController {
     public void deleteRepository(@PathVariable Long id) {
         repositoryService.deleteRepository(id);
     }
+
 }

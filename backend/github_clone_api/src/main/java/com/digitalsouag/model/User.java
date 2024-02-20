@@ -12,10 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * The persistent class for the user database table.
- * 
- */
 @Entity
 @NoArgsConstructor
 @Getter

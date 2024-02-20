@@ -1,5 +1,6 @@
 package com.digitalsouag.controller;
 
+import com.digitalsouag.config.AppConstants;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,7 @@ import com.digitalsouag.dto.LocalUser;
 import com.digitalsouag.util.GeneralUtils;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(AppConstants.API_ROOT)
 public class UserController {
 
 	@GetMapping("/user/me")

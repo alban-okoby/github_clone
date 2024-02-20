@@ -14,4 +14,7 @@ public interface GRepositoryRepo extends JpaRepository<GRepository, Long> {
     List<GRepository> findByRepositoryName(String s);
     @Query("SELECT r FROM GRepository r WHERE r.user.displayName = :username AND r.repositoryName = :repositoryName")
     Optional<GRepository> findByUserUsernameAndRepositoryName(@Param("username") String username, @Param("repositoryName") String repositoryName);
+
+    @Query("SELECT r FROM GRepository r WHERE r.user.username = :username")
+    List<GRepository> findGRepositoriesByUsername(@Param("username") String username);
 }

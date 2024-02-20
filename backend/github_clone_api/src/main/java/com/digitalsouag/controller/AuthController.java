@@ -80,6 +80,16 @@ public class AuthController {
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, authenticated, authenticated ? GeneralUtils.buildUserInfo(localUser) : null));
 	}
 
+	@GetMapping("/findUserByEmail")
+	public ResponseEntity<?> findUserByEmail(@RequestBody String email) {
+		User user = userService.findTheUserByEmail(email);
+		if (user == null) {
+			return new ResponseEntity("USER NOT FOUND", HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity(user, HttpStatus.OK);
+
+	}
+
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		try {
