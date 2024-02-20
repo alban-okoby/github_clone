@@ -89,12 +89,12 @@ export class SignUpComponent {
     // if (this.registerForm.valid) {
     this.isRequesting = true;
     this.authService.SignUp(this.registerModel).subscribe((res: any) => {
-      // this.showSuccessMessage(res.user.displayName);
-      if (this.registerForm.valid) {
+      this.showSuccessMessage(res.user.displayName);
+      // if (this.registerForm.valid) {
         setTimeout(() => {
           this.router.navigateByUrl('/auth/signin');
         }, 900);
-      } 
+      // }
     });
   }
 

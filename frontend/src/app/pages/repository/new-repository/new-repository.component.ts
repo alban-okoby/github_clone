@@ -13,7 +13,7 @@ export class NewRepositoryComponent implements OnInit {
 
   constructor(private router: Router) {}
   ngOnInit(): void {
-    let connectedUser = localStorage.getItem('c_uM');
+    let connectedUser = localStorage.getItem('c_uN');
     this.connectedUser = connectedUser;
   }
 }

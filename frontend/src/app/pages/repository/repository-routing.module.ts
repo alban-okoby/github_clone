@@ -10,10 +10,13 @@ const routes: Routes = [
     canActivate: [authGuard],
     children: [
       {
-        path: '', component: RepositoryListComponent,
+        path: 'new', component: NewRepositoryComponent
       },
       {
-        path: 'new', component: NewRepositoryComponent
+        path: ':username', component: RepositoryListComponent,
+      },
+      {
+        path: '**', redirectTo: '/', pathMatch: 'full'
       }
     ]
   }
