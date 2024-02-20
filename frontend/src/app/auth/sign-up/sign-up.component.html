@@ -15,18 +15,59 @@
             <h1>Register in to GitHub</h1>
           </div>
           <div class="form-body">
-            <label>Email address</label>
-            <input class="form-control input-block" formControlName="email" [(ngModel)]="registerModel.email"
-              type="text">
-            <label>Display Name</label>
-            <input class="form-control input-block" formControlName="displayName"
-              [(ngModel)]="registerModel.displayName" type="text">
-            <label>Password</label>
-            <input class="form-control input-block" type="password" name="password" formControlName="password"
-              [(ngModel)]="registerModel.password">
-            <label>Repeat Password</label>
-            <input class="form-control input-block" type="password" name="matchingPassword" formControlName="password"
+            <div class="form-group">
+              <div class="d-flex">
+                <label class="mr-2" style="margin-right: .5rem;">Email address</label>
+                <mat-error *ngIf="email.touched && !email.valid">
+                  {{ emailError() }}
+                </mat-error>
+              </div>
+              <input class="form-control input-block" formControlName="email" [(ngModel)]="registerModel.email"
+                type="text">
+            </div>
+            <div class="form-group">
+              <div class="d-flex">
+                <label class="mr-2">Username</label>
+                <mat-error *ngIf="username.touched && !username.valid">
+                  {{ usernameError() }}
+                </mat-error>
+              </div>
+              <input class="form-control input-block" formControlName="email" [(ngModel)]="registerModel.username"
+                type="text">
+            </div>
+
+            <div class="form-group">
+              <div class="d-flex">
+                <label class="mr-2">Full Name </label>
+                <mat-error *ngIf="displayName.touched && !displayName.valid">
+                  {{ displayNameError() }}
+                </mat-error>
+              </div>
+              <input class="form-control input-block" formControlName="displayName"
+                [(ngModel)]="registerModel.displayName" type="text">
+            </div>
+
+            <div class="form-group">
+              <div class="d-flex">
+                <label class="mr-2">Password </label>
+                <mat-error *ngIf="password.touched && !password.valid">
+                  {{ passwordError() }}
+                </mat-error>
+              </div>
+              <input class="form-control input-block" type="password" name="password" formControlName="password"
+                [(ngModel)]="registerModel.password">
+            </div>
+
+            <div class="form-group">
+              <div class="d-flex">
+                <label class="mr-2">Repeat Password</label>
+                <mat-error *ngIf="password.touched && !password.valid">
+                  {{ matchingPasswordError() }}
+                </mat-error>
+              </div>
+              <input class="form-control input-block" type="password" name="matchingPassword" formControlName="password"
               [(ngModel)]="registerModel.matchingPassword">
+            </div>
             <button class="button" type="submit" (click)="submit()"> Register </button>
           </div>
         </form>

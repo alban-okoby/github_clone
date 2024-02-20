@@ -53,6 +53,7 @@ export class SignUpComponent {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     this.registerForm = this.fb.group({
       email: [this.registerModel.email, [Validators.pattern(emailPattern)]],
+      username: [this.registerModel.username, [Validators.required, Validators.maxLength(50), Validators.minLength(2)]],
       password: [
         this.registerModel.password,
         [Validators.required, Validators.minLength(6)],
@@ -70,6 +71,9 @@ export class SignUpComponent {
 
   get email() {
     return this.registerForm.get('email') as FormControl;
+  }
+  get username() {
+    return this.registerForm.get('username') as FormControl;
   }
   get password() {
     return this.registerForm.get('password') as FormControl;
@@ -89,8 +93,8 @@ export class SignUpComponent {
       if (this.registerForm.valid) {
         setTimeout(() => {
           this.router.navigateByUrl('/auth/signin');
-        }, 1500);
-      }
+        }, 900);
+      } 
     });
   }
 
@@ -122,8 +126,8 @@ export class SignUpComponent {
 
     Toast.fire({
       icon: 'success',
-      title: `Register successFully ${username}. Check your email: ${email} to validate your registration `,
-      timer: 15000,
+      title: `Your are registered successFully ${username}. Please check your email: ${email} to validate your registration `,
+      timer: 11000,
     });
   }
 
@@ -152,6 +156,15 @@ export class SignUpComponent {
       ? 'Email is required'
       : this.email.hasError('pattern')
       ? 'Email invalid'
+      : '';
+  }
+  usernameError() {
+    return this.username.hasError('required')
+      ? 'Username is required'
+      : this.username.hasError('maxLength')
+      ? 'Username is to long > 50'
+      : this.username.hasError('minLength')
+      ? 'Username is to Short < 2'
       : '';
   }
   passwordError() {

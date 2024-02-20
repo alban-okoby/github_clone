@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   SignUp(userData: any) {
-    return this.http.post(`http://localhost:8090/api/v1/auth/signup`, userData, {headers: environment.headers} )
+    return this.http.post(`${this.API_URL}/signup`, userData, {headers: environment.headers} )
     .pipe(
       catchError((error: any) => {
         console.error('SignUp failed:', error);

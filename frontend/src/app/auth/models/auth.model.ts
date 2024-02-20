@@ -6,4 +6,5 @@ export class AuthModel {
 export class RegisterModel extends AuthModel {
   matchingPassword!: string;
   displayName!: string;
+  username!: string;
 }
