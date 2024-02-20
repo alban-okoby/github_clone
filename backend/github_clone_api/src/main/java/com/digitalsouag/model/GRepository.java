@@ -10,13 +10,13 @@ import javax.persistence.*;
 public class GRepository {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "repo_id")
+    @Column(name = "REPO_ID")
     private Long id;
     private String repositoryName;
     private String repositoryDescription;
     private boolean visibility;
 
-    @ManyToOne()
-    @JoinColumn(nullable = false, name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
     private User user;
 }

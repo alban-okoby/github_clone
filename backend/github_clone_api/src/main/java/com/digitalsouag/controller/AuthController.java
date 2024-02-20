@@ -120,8 +120,7 @@ public class AuthController {
 
 		if (tokenValue != null) {
 			userService.validateVerificationToken(token);
-			String buttonUrl =String.format("<a href=\"localhost:4200/auth/signin\" class=\"confirmation-button\">" +
-					"Login now </a>");
+			String buttonUrl =String.format("<a href=\"localhost:4200/auth/signin\" class=\"confirmation-button\">");
 			return ResponseEntity.ok().body("Your GC (Github Clone) Account is activated successfully ✅." + buttonUrl);
 		}
 		else {

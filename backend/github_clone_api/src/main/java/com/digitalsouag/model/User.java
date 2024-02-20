@@ -32,6 +32,7 @@ public class User implements Serializable {
 	private String providerUserId;
 
 	private String email;
+	private String username;
 
 	@Column(name = "enabled", columnDefinition = "BIT", length = 1)
 	private boolean enabled;
@@ -61,6 +62,6 @@ public class User implements Serializable {
 	@JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "USER_ID")}, inverseJoinColumns = {@JoinColumn(name = "ROLE_ID")})
 	private Set<Role> roles;
 
-	@OneToMany(mappedBy = "user_id")
+	@OneToMany(mappedBy = "user")
 	private Set<GRepository> repositories;
 }

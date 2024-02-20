@@ -5,10 +5,14 @@ import javax.validation.constraints.Size;
 
 import com.digitalsouag.validator.PasswordMatches;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @PasswordMatches
+@AllArgsConstructor
+@NoArgsConstructor
 public class SignUpRequest {
 
 	private Long userID;
@@ -20,6 +24,8 @@ public class SignUpRequest {
 
 	@NotEmpty
 	private String email;
+	
+	private String username;
 
 	private SocialProvider socialProvider;
 
@@ -39,11 +45,15 @@ public class SignUpRequest {
 		this.matchingPassword = matchingPassword;
 		this.socialProvider = socialProvider;
 	}
-	public SignUpRequest(String displayName, String email, String password, String matchingPassword) {
+	public SignUpRequest(String displayName, String email, String username, String password, String matchingPassword) {
 		this.displayName = displayName;
 		this.email = email;
+		this.username = username;
 		this.password = password;
 		this.matchingPassword = matchingPassword;
+	}
+
+	public SignUpRequest(String providerUserID, String displayName, String email, String username, String password, String matchingPassword, SocialProvider socialProvider) {
 	}
 
 	public static Builder getBuilder() {
@@ -53,6 +63,7 @@ public class SignUpRequest {
 	public static class Builder {
 		private String providerUserID;
 		private String displayName;
+		private String username;
 		private String email;
 		private String password;
 		private String matchingPassword;
@@ -89,7 +100,8 @@ public class SignUpRequest {
 		}
 
 		public SignUpRequest build() {
-			return new SignUpRequest(providerUserID, displayName, email, password, matchingPassword, socialProvider);
+			return new SignUpRequest(providerUserID, displayName, email, username, password, matchingPassword, socialProvider);
 		}
+
 	}
 }

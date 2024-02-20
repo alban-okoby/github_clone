@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService {
 		User user = new User();
 		user.setDisplayName(formDTO.getDisplayName());
 		user.setEmail(formDTO.getEmail());
+		user.setUsername(formDTO.getUsername());
 		user.setPassword(passwordEncoder.encode(formDTO.getPassword()));
 		final HashSet<Role> roles = new HashSet<Role>();
 		roles.add(roleRepository.findByName(Role.ROLE_USER));
