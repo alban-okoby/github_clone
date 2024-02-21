@@ -1,77 +1,81 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="profile col-lg-3">
-      <img src="https://via.placeholder.com/150" alt="Profile Picture" class="img-fluid">
-      <div class="profile-name">John Doe</div>
-      <div>joed</div>
-      <div class="profile-description mt-4">Enthusiast Software Developer, who makes the web fast, pleasant and useful</div>
-      <a href="javascript:void(0)" class="edit-profile">Edit Profile</a>
-    </div>
+<ng-container *ngIf="this.repositoriesWithOwner.length > 1">
 
-    <div class="col-lg-9">
-      <div class="col-lg-12 mb-3">
-        <div class="row">
-          <div class="search-container col-lg-5">
-            <input type="text" placeholder="Find a repository.." class="form-control">
-          </div>
-          <div class="col-lg-5">
-            <div class="filters">
-              <select name="type" id="type" class="form-select mr-1">
-                <option value="">Type</option>
-                <option value="true">Public</option>
-                <option value="false">Private</option>
-              </select>
-              <select name="language" id="language" class="form-select">
-                <option value="">Language</option>
-                <option value="javascript">JavaScript</option>
-                <option value="typescript">TypeScript</option>
-              </select>
-              <select name="sort" id="sort" class="form-select">
-                <option value="">Sort</option>
-                <option value="latest">Latest</option>
-                <option value="oldest">Oldest</option>
-              </select>
-            </div>
-          </div>
-          <button class="btn btn-success col-lg-1 d-md-flex flex-md-items-center flex-md-justify-end" routerLink="/new">
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
-              class="octicon octicon-repo">
-              <path
-                d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z">
-              </path>
-            </svg>
-            New</button>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="profile col-lg-3">
+        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="img-fluid">
+        <div class="profile-name">{{owner.user.displayName}}</div>
+        <div>{{owner.user.username}}</div>
+        <div class="profile-description mt-4">Enthusiast Software Developer, who makes the web fast, pleasant and useful
         </div>
+        <a href="javascript:void(0)" class="edit-profile">Edit Profile</a>
       </div>
 
-      <ul class="repo-list">
-        <li class="repo-item row">
-          <div class="left col-10">
-            <div class="repo-title">
-              <div class="repo-name">Repository Name
+      <div class="col-lg-9">
+        <div class="col-lg-12 mb-3">
+          <div class="row">
+            <div class="search-container col-lg-5">
+              <input type="text" placeholder="Find a repository.." class="form-control">
+            </div>
+            <div class="col-lg-5">
+              <div class="filters">
+                <select name="type" id="type" class="form-select mr-1">
+                  <option value="">Type</option>
+                  <option value="true">Public</option>
+                  <option value="false">Private</option>
+                </select>
+                <select name="language" id="language" class="form-select">
+                  <option value="">Language</option>
+                  <option value="javascript">JavaScript</option>
+                  <option value="typescript">TypeScript</option>
+                </select>
+                <select name="sort" id="sort" class="form-select">
+                  <option value="">Sort</option>
+                  <option value="latest">Latest</option>
+                  <option value="oldest">Oldest</option>
+                </select>
               </div>
-              <small class="public">Public</small>
             </div>
-            <div class="repo-description">Description of the repository goes here.</div>
-            <div class="repo-tags">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">TypeScript</span>
-            </div>
-            <div class="repo-details ">
-              <span class="langage mr-5">
-                <span class="langage-color"></span>
-                💙TypeScript
-              </span>
-              <span class="ml-3">
-                updated 30 minutes ago </span>
-            </div>
+            <button class="btn btn-success col-lg-1 d-md-flex flex-md-items-center flex-md-justify-end"
+              routerLink="/new">
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                data-view-component="true" class="octicon octicon-repo">
+                <path
+                  d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z">
+                </path>
+              </svg>
+              New</button>
           </div>
-          <div class="right col-2">
-            <div class="star">
-              <span class="far fa-star mr-3"></span>
-              <span>Star</span>
-              <!-- <div class="btn-group">
+        </div>
+
+        <ul class="repo-list">
+          <li class="repo-item row" *ngFor="let r of repositoriesWithOwner">
+            <div class="left col-10">
+              <div class="repo-title">
+                <div class="repo-name">{{r.repositoryName}}
+                </div>
+                <small class="public">Public</small>
+              </div>
+              <div class="repo-description">{{ r.repositoryDescription }}</div>
+              <div class="repo-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">TypeScript</span>
+              </div>
+              <div class="repo-details ">
+                <span class="langage mr-5">
+                  <span class="langage-color"></span>
+                  💙TypeScript
+                </span>
+                <span class="ml-3">
+                  updated 30 minutes ago </span>
+              </div>
+            </div>
+            <div class="right col-2">
+              <div class="star">
+                <span class="far fa-star mr-3"></span>
+                <span>Star</span>
+                <!-- <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
                   data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Toggle Dropdown</span>
@@ -80,10 +84,10 @@
                   ...
                 </ul>
               </div> -->
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="repo-item row">
+          </li>
+          <!-- <li class="repo-item row">
           <div class="left col-10">
 
             <div class="repo-title">
@@ -108,10 +112,32 @@
           <div class="right col-2">
             <span>✡</span>
           </div>
-        </li>
-        <!-- Add more repo items as needed -->
-      </ul>
-    </div>
+        </li> -->
+          <!-- Add more repo items as needed -->
+        </ul>
+      </div>
 
+    </div>
   </div>
-</div>
+</ng-container>
+
+<ng-container *ngIf="repositoriesWithOwner.length < 1">
+  <section class="p-0 bg-img cover-background" style="background: linear-gradient(rgb(76, 78, 76), rgb(162, 103, 207));">
+    <div class="container-fluid d-flex flex-column">
+      <div class="row align-items-center justify-content-center min-vh-100">
+        <div class="col-md-9 col-lg-6 my-5">
+          <div class="text-center error-page">
+            <h1 class="mb-0 text-light">404</h1>
+            <h2 class="mb-4 text-white">Repository not found</h2>
+            <p class="w-sm-80 mx-auto mb-4 text-white">This page is incidentally inaccessible because of support. We
+              don't find your repository</p>
+            <div>
+              <a routerLink="/" class="btn btn-dark btn-lg me-sm-2 mb-2 mb-sm-0 cursor-pointer">Return Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</ng-container>

@@ -14,10 +14,10 @@ const routes: Routes = [
       {
         path: '', loadChildren: () => import('./repository/repository.module').then(m => m.RepositoryModule)
       },
-      { path: '', redirectTo: '', pathMatch: 'full' },
+      // { path: '', redirectTo: '', pathMatch: 'full' },
       // { path: '**', redirectTo: '', pathMatch: 'full' },
     ]
-  }
+  },
 ];
 
 @NgModule({

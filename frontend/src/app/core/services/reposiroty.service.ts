@@ -13,6 +13,9 @@ export class ReposirotyService {
 
   API_URL = environment.GITHUB_CLONE_API_URL + '/repository';
 
+  getRepositoryListByUsername(username: string) {
+    return this.http.get(`${this.API_URL}/${username}`, {headers: environment.headers} )
+  }
   createRepository(repository: GRepository, userId: any) {
     return this.http.post(`${this.API_URL}/`, {headers: environment.headers} )
   }

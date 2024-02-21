@@ -9,6 +9,7 @@ export class UserModel extends AuthModel {
   username!: string;
   firstname: string = '';
   lastname: string = '';
+  displayName: string = '';
   website: string = '';
   imageUrl : string = '';
 

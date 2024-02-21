@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/auth/services/user.service';
+import { GRepository } from 'src/app/core/model/GRepository';
+import { ReposirotyService } from 'src/app/core/services/reposiroty.service';
 
 @Component({
   selector: 'app-repository-list',
@@ -10,18 +12,21 @@ import { UserService } from 'src/app/auth/services/user.service';
 export class RepositoryListComponent implements OnInit {
   currenUser!: any;
   userName!: any;
+  repositoriesWithOwner: GRepository[] = [];
+  owner!: any;
 
   constructor(
     private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private repositoryService: ReposirotyService
   ) {}
 
   ngOnInit(): void {
-    this.getCurrentUser();
+    this.getCurrentUserRepository();
   }
 
-  getCurrentUser() {
-    this.activatedRoute.paramMap.subscribe((p: any) => {
+  getCurrentUserRepository() {
+    this.activatedRoute.paramMap.subscribe((p) => {
       this.userName = p.get('username');
       console.log(this.userName);
     });
@@ -29,5 +34,14 @@ export class RepositoryListComponent implements OnInit {
       this.currenUser = res;
       console.log(this.currenUser);
     });
+
+    // List of repository by username
+    this.repositoryService.getRepositoryListByUsername(this.userName).subscribe((res: any) => {
+      this.repositoriesWithOwner = res;
+      if (this.repositoriesWithOwner.length > 0) {
+        const getOWner = this.repositoriesWithOwner[this.repositoriesWithOwner.length - 1];
+        this.owner = getOWner;
+      }
+    })
   }
 }

@@ -10,9 +10,12 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       { path: 'signin', component: SignInComponent  },
-      { path: 'signup', component: SignUpComponent  }
+      { path: 'signup', component: SignUpComponent  },
+      { path: '**', redirectTo: 'signin', pathMatch: 'full'  },
     ]
-  }
+  },
+  { path: '', redirectTo: 'signin', pathMatch: 'full'  },
+
 ];
 
 @NgModule({

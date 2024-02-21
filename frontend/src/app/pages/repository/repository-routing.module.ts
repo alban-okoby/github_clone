@@ -13,7 +13,7 @@ const routes: Routes = [
         path: 'new', component: NewRepositoryComponent
       },
       {
-        path: ':username', component: RepositoryListComponent,
+        path: ':username/repositories', component: RepositoryListComponent,
       },
       {
         path: '**', redirectTo: '/', pathMatch: 'full'
