@@ -55,7 +55,6 @@ export class RepositoryListComponent implements OnInit {
 
         this.allRepositoryWithOwner.forEach((repo) => {
           if (this.userName === this.owner.user.username && this.userName === localStorage.getItem('c_uN')) {
-            // this.repositoriesWithOwner.push(repo);
             this.repositoriesWithOwner = this.allRepositoryWithOwner;
             this.isConnected = true;
           } else {

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RepositoryRoutingModule } from './repository-routing.module';
 import { RepositoryListComponent } from './repository-list/repository-list.component';
 import { NewRepositoryComponent } from './new-repository/new-repository.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import { NewRepositoryComponent } from './new-repository/new-repository.componen
   ],
   imports: [
     CommonModule,
-    RepositoryRoutingModule
+    RepositoryRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class RepositoryModule { }

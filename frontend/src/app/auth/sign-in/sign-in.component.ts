@@ -87,6 +87,7 @@ export class SignInComponent {
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('c_uM', res.user.email);
             localStorage.setItem('c_uN', res.user.username);
+            localStorage.setItem('c_uId', res.user.id);
 
             this.router.navigateByUrl('/');
             setTimeout(() => {
