@@ -34,10 +34,15 @@ public class GRepositoryController {
         return new ResponseEntity(repoList, HttpStatus.OK);
     }
 
-    @PostMapping("/{userId}")
+    @PostMapping
     public GRepositoryDTO createRepository(@RequestBody GRepositoryDTO repositoryDTO, @PathVariable Long userId) {
         return repositoryService.createRepository(repositoryDTO, userId);
     }
+//    @PostMapping("/{userId}")
+//    public GRepositoryDTO createRepository(@RequestBody GRepositoryDTO repositoryDTO, @PathVariable Long userId) {
+//        return repositoryService.createRepository(repositoryDTO, userId);
+//    }
+
 
     @PutMapping("/{id}")
     public GRepositoryDTO updateRepository(@PathVariable Long id, @RequestBody GRepositoryDTO repositoryDTO) {
