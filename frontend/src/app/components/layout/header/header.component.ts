@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.connectedUser = localStorage.getItem('c_uN');
-    console.log(this.connectedUser);
     this.router.events.subscribe((event) => {
       if (this.router.url !== '' && this.alreadyLogin == 'true') {
         this.isLogged = true;

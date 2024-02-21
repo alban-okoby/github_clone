@@ -13,7 +13,10 @@ export class RepositoryListComponent implements OnInit {
   currenUser!: any;
   userName!: any;
   repositoriesWithOwner: GRepository[] = [];
+  allRepositoryWithOwner: GRepository[] = [];
   owner!: any;
+  showContent: boolean = false;
+  isConnected: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -23,25 +26,43 @@ export class RepositoryListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentUserRepository();
+
+    setTimeout(() => {
+      this.showContent = true;
+    },600);
   }
 
   getCurrentUserRepository() {
     this.activatedRoute.paramMap.subscribe((p) => {
       this.userName = p.get('username');
-      console.log(this.userName);
     });
-    this.userService.currentUser().subscribe((res) => {
-      this.currenUser = res;
-      console.log(this.currenUser);
-    });
+    // Actually don't works
+    // this.userService.currentUser().subscribe((res) => {
+    //   this.currenUser = res;
+    // });
 
     // List of repository by username
-    this.repositoryService.getRepositoryListByUsername(this.userName).subscribe((res: any) => {
-      this.repositoriesWithOwner = res;
-      if (this.repositoriesWithOwner.length > 0) {
-        const getOWner = this.repositoriesWithOwner[this.repositoriesWithOwner.length - 1];
-        this.owner = getOWner;
-      }
-    })
+    this.repositoryService
+      .getRepositoryListByUsername(this.userName)
+      .subscribe((res: any) => {
+        this.allRepositoryWithOwner = res;
+
+        if (this.allRepositoryWithOwner.length > 0) {
+          const getOWner =
+            this.allRepositoryWithOwner[this.allRepositoryWithOwner.length - 1];
+          this.owner = getOWner;
+        }
+
+        this.allRepositoryWithOwner.forEach((repo) => {
+          if (this.userName === this.owner.user.username && this.userName === localStorage.getItem('c_uN')) {
+            // this.repositoriesWithOwner.push(repo);
+            this.repositoriesWithOwner = this.allRepositoryWithOwner;
+            this.isConnected = true;
+          } else {
+            this.repositoriesWithOwner = this.allRepositoryWithOwner.filter(r => r.visibility === true);
+            this.isConnected = false;
+          }
+        });
+      });
   }
 }

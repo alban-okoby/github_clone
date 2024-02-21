@@ -7,9 +7,9 @@ import { NewRepositoryComponent } from './new-repository/new-repository.componen
 const routes: Routes = [
   {
     path: '',
-    canActivate: [authGuard],
     children: [
       {
+        canActivate: [authGuard],
         path: 'new', component: NewRepositoryComponent
       },
       {

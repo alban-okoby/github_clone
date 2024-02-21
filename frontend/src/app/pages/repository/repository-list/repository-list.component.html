@@ -1,4 +1,4 @@
-<ng-container *ngIf="this.repositoriesWithOwner.length > 1">
+<ng-container *ngIf="this.repositoriesWithOwner.length > 0 || owner != null">
 
   <div class="container mt-5">
     <div class="row">
@@ -36,7 +36,7 @@
                 </select>
               </div>
             </div>
-            <button class="btn btn-success col-lg-1 d-md-flex flex-md-items-center flex-md-justify-end"
+            <button *ngIf="isConnected" class="btn btn-success col-lg-1 d-md-flex flex-md-items-center flex-md-justify-end"
               routerLink="/new">
               <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
                 data-view-component="true" class="octicon octicon-repo">
@@ -54,7 +54,7 @@
               <div class="repo-title">
                 <div class="repo-name">{{r.repositoryName}}
                 </div>
-                <small class="public">Public</small>
+                <small [ngClass]="r.visibility ? 'private' : 'public'">{{ r.visibility ? 'Public': 'Private' }}</small>
               </div>
               <div class="repo-description">{{ r.repositoryDescription }}</div>
               <div class="repo-tags">
@@ -87,33 +87,6 @@
               </div>
             </div>
           </li>
-          <!-- <li class="repo-item row">
-          <div class="left col-10">
-
-            <div class="repo-title">
-              <div class="repo-name">Repository Name
-              </div>
-              <small class="private">Private</small>
-            </div>
-            <div class="repo-description">Another repository description.</div>
-            <div class="repo-tags">
-              <span class="tag">JavaScript</span>
-              <span class="tag">React</span>
-            </div>
-            <div class="repo-details ">
-              <span class="langage mr-5">
-                🤎Java
-              </span>
-              <span class="ml-3">
-                updated 1 week ago
-              </span>
-            </div>
-          </div>
-          <div class="right col-2">
-            <span>✡</span>
-          </div>
-        </li> -->
-          <!-- Add more repo items as needed -->
         </ul>
       </div>
 
@@ -121,14 +94,14 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="repositoriesWithOwner.length < 1">
+<ng-container *ngIf="repositoriesWithOwner.length < 1 && showContent === true">
   <section class="p-0 bg-img cover-background" style="background: linear-gradient(rgb(76, 78, 76), rgb(162, 103, 207));">
     <div class="container-fluid d-flex flex-column">
       <div class="row align-items-center justify-content-center min-vh-100">
         <div class="col-md-9 col-lg-6 my-5">
           <div class="text-center error-page">
             <h1 class="mb-0 text-light">404</h1>
-            <h2 class="mb-4 text-white">Repository not found</h2>
+            <h2 class="mb-4 text-white">User or Repository not found</h2>
             <p class="w-sm-80 mx-auto mb-4 text-white">This page is incidentally inaccessible because of support. We
               don't find your repository</p>
             <div>
@@ -139,5 +112,4 @@
       </div>
     </div>
   </section>
-
 </ng-container>

@@ -26,12 +26,13 @@
           <img src="assets/media/avatar/avatar-2.png" alt="mdo" width="32" height="32" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small">
+          <li class="text-center p-2"> @{{ connectedUser }}</li>
           <li><a class="dropdown-item" routerLink="{{connectedUser}}/repositories">Your repositories</a></li>
           <li><a class="dropdown-item" href="javascript:void(0)">Your Profile</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+          <li><a class="dropdown-item" (click)="logOut()">Sign out <span class="fas fa-sign-out-alt text-danger"></span> </a></li>
         </ul>
       </div>
     </div>
