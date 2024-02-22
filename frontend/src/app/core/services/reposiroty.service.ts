@@ -13,13 +13,29 @@ export class ReposirotyService {
 
   API_URL = environment.GITHUB_CLONE_API_URL + '/repository';
 
+  /**
+   * get a repositories by username 
+   * @param username 
+   * @returns List of repositories or empty table
+   */
   getRepositoryListByUsername(username: string) {
-    return this.http.get(`${this.API_URL}/${username}`, {headers: environment.headers} )
+    return this.http.get(`${this.API_URL}/${username}`, {headers: environment.headers});
   }
   createRepository(repository: GRepository) {
-    return this.http.post(`${this.API_URL}/`,repository, {headers: environment.headers} )
+    return this.http.post(`${this.API_URL}/`,repository, {headers: environment.headers});
   }
+
+  // Not yet used 
   createRepo(repository: GRepository, userId: any) {
-    return this.http.post(`${this.API_URL}/`, {headers: environment.headers} )
+    return this.http.post(`${this.API_URL}/`, {headers: environment.headers});
+  }
+
+  /**
+   * searchRepository
+   * @param searchTerm repository name
+   */
+  searchRepository(searchTerm: string) {
+    const result = this.http.get(`${this.API_URL}/search?q=${searchTerm}`, {headers: environment.headers});
+    return result;
   }
 }

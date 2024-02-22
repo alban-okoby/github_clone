@@ -11,11 +11,15 @@
         <a href="javascript:void(0)" class="edit-profile">Edit Profile</a>
       </div>
 
+      <!-- <ul>
+        <li (change)="searchReposities()" *ngFor="let r of searchRepositoryResults"> {{ r.repositoryName }} </li>
+      </ul> -->
       <div class="col-lg-9">
         <div class="col-lg-12 mb-3">
           <div class="row">
             <div class="search-container col-lg-5">
-              <input type="text" placeholder="Find a repository.." class="form-control">
+              <input type="text" placeholder="Find a repository.." class="form-control" [(ngModel)]="searchKeyword"
+                (input)="searchReposities()">
             </div>
             <div class="col-lg-5">
               <div class="filters">
@@ -36,8 +40,8 @@
                 </select>
               </div>
             </div>
-            <button *ngIf="isConnected" class="btn btn-success col-lg-1 d-md-flex flex-md-items-center flex-md-justify-end"
-              routerLink="/new">
+            <button *ngIf="isConnected"
+              class="btn btn-success col-lg-1 d-md-flex flex-md-items-center flex-md-justify-end" routerLink="/new">
               <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
                 data-view-component="true" class="octicon octicon-repo">
                 <path
@@ -51,6 +55,9 @@
         <ul class="repo-list">
           <li class="repo-item row" *ngFor="let r of repositoriesWithOwner">
             <div class="left col-10">
+              <ng-container *ngIf="repositoriesWithOwner.length < 1">
+                <span class="text-black"> {{ repositoriesWithOwner.length }} result for repositories matching {{searchKeyword}} </span>
+              </ng-container>
               <div class="repo-title">
                 <div class="repo-name">{{r.repositoryName}}
                 </div>
@@ -92,24 +99,4 @@
 
     </div>
   </div>
-</ng-container>
-
-<ng-container *ngIf="repositoriesWithOwner.length < 1 && showContent === true">
-  <section class="p-0 bg-img cover-background" style="background: linear-gradient(rgb(76, 78, 76), rgb(162, 103, 207));">
-    <div class="container-fluid d-flex flex-column">
-      <div class="row align-items-center justify-content-center min-vh-100">
-        <div class="col-md-9 col-lg-6 my-5">
-          <div class="text-center error-page">
-            <h1 class="mb-0 text-light">404</h1>
-            <h2 class="mb-4 text-white">User or Repository not found</h2>
-            <p class="w-sm-80 mx-auto mb-4 text-white">This page is incidentally inaccessible because of support. We
-              don't find your repository</p>
-            <div>
-              <a routerLink="/" class="btn btn-dark btn-lg me-sm-2 mb-2 mb-sm-0 cursor-pointer">Return Home</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </ng-container>

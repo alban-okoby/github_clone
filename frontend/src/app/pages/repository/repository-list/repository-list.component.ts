@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/auth/services/user.service';
 import { GRepository } from 'src/app/core/model/GRepository';
 import { ReposirotyService } from 'src/app/core/services/reposiroty.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-repository-list',
@@ -15,6 +16,8 @@ export class RepositoryListComponent implements OnInit {
   repositoriesWithOwner: GRepository[] = [];
   allRepositoryWithOwner: GRepository[] = [];
   owner!: any;
+  searchKeyword: string = '';
+  searchRepositoryResults: GRepository[] = [];
   showContent: boolean = false;
   isConnected: boolean = false;
 
@@ -29,7 +32,7 @@ export class RepositoryListComponent implements OnInit {
 
     setTimeout(() => {
       this.showContent = true;
-    },600);
+    }, 600);
   }
 
   getCurrentUserRepository() {
@@ -54,14 +57,41 @@ export class RepositoryListComponent implements OnInit {
         }
 
         this.allRepositoryWithOwner.forEach((repo) => {
-          if (this.userName === this.owner.user.username && this.userName === localStorage.getItem('c_uN')) {
+          if (
+            this.userName === this.owner.user.username &&
+            this.userName === localStorage.getItem('c_uN')
+          ) {
+            
             this.repositoriesWithOwner = this.allRepositoryWithOwner;
             this.isConnected = true;
           } else {
-            this.repositoriesWithOwner = this.allRepositoryWithOwner.filter(r => r.visibility === true);
+            this.repositoriesWithOwner = this.allRepositoryWithOwner.filter(
+              (r) => r.visibility === true
+            );
             this.isConnected = false;
           }
         });
       });
+  }
+
+  searchReposities() {
+    if (this.searchKeyword.trim() !== '') {
+      setTimeout(() => {
+        this.repositoryService
+          .searchRepository(this.searchKeyword)
+          .subscribe((r: any) => {
+            this.searchRepositoryResults = r;
+            this.repositoriesWithOwner = r; // this line
+            if (this.searchRepositoryResults.length === 0) {
+            } else {
+              this.repositoriesWithOwner = this.searchRepositoryResults.filter(repo =>
+                repo.repositoryName.toLowerCase().includes(this.searchKeyword.toLowerCase())
+              );
+            }
+          });
+      }, 200);
+    } else {
+      this.repositoriesWithOwner = this.allRepositoryWithOwner;
+    }
   }
 }
