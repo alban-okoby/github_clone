@@ -2,9 +2,6 @@
   <h1>Create a New Repository</h1>
   <form [formGroup]="form">
     <div class="d-flex row">
-      {{
-        repository | json 
-      }}
       <div class="left col-md-5">
         <label for="repo-name">Owner <span class="required">*</span></label>
         <input type="text" id="repo-owner" name="repo-owner" [disabled]="true" value="{{connectedUser}}">
