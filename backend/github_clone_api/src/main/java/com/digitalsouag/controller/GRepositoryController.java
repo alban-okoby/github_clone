@@ -34,9 +34,16 @@ public class GRepositoryController {
         return new ResponseEntity(repoList, HttpStatus.OK);
     }
 
+    @PostMapping("aa")
+    public ResponseEntity<GRepositoryDTO> createRepository(@RequestBody GRepositoryDTO repositoryDTO, Long userId) {
+        repositoryService.createRepository(repositoryDTO, userId);
+        return new ResponseEntity(repositoryDTO, HttpStatus.CREATED);
+    }
+
     @PostMapping
-    public GRepositoryDTO createRepository(@RequestBody GRepositoryDTO repositoryDTO, @PathVariable Long userId) {
-        return repositoryService.createRepository(repositoryDTO, userId);
+    public ResponseEntity<GRepositoryDTO> createRepo(@RequestBody GRepositoryDTO repositoryDTO) {
+        repositoryService.createRepository(repositoryDTO);
+        return new ResponseEntity(repositoryDTO, HttpStatus.CREATED);
     }
 //    @PostMapping("/{userId}")
 //    public GRepositoryDTO createRepository(@RequestBody GRepositoryDTO repositoryDTO, @PathVariable Long userId) {

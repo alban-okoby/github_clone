@@ -6,6 +6,7 @@ import com.digitalsouag.dto.UserInfo;
 import com.digitalsouag.model.GRepository;
 import com.digitalsouag.model.User;
 import com.digitalsouag.repo.GRepositoryRepo;
+import com.digitalsouag.repo.UserRepository;
 import com.digitalsouag.service.GRepositoryService;
 import com.digitalsouag.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -27,6 +28,13 @@ public class GRepositoryServiceImpl implements GRepositoryService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public GRepositoryServiceImpl(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public List<GRepositoryDTO> getAllRepositories() {
@@ -60,7 +68,16 @@ public class GRepositoryServiceImpl implements GRepositoryService {
     public GRepositoryDTO createRepository(GRepositoryDTO repositoryDTO, Long userId) {
         User user = userService.findUserById(userId).get();
         UserDTO userInfo = userToDTO(user);
-        repositoryDTO.setUser(userInfo);
+        repositoryDTO.setUser_id(userId);
+        GRepository entity = convertToEntity(repositoryDTO);
+        return convertToDTO(gRepo.save(entity));
+    }
+
+    @Override
+    public GRepositoryDTO createRepository(GRepositoryDTO repositoryDTO) {
+        User user = userRepository.findById(repositoryDTO.getUser_id()).get();
+        UserDTO userInfo = userToDTO(user);
+        repositoryDTO.setUser_id(userInfo.getId());
         GRepository entity = convertToEntity(repositoryDTO);
         return convertToDTO(gRepo.save(entity));
     }

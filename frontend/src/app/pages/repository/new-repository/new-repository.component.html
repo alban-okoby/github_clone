@@ -22,8 +22,8 @@
 
     <label for="visibility">Visibility</label>
     <select id="visibility" name="visibility" class="form-select"  formControlName="visibility" [(ngModel)]="repository.visibility">
-      <option value="1">Public</option>
-      <option value="0">Private</option>
+      <option [value]="visibilities.public">Public</option>
+      <option [value]="visibilities.private">Private</option>
     </select>
 
     <input type="submit" value="Create repository" (click)="submitEntity()">

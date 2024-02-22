@@ -15,8 +15,9 @@ public class GRepository {
     private String repositoryName;
     private String repositoryDescription;
     private boolean visibility;
+    private Long user_id;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
     private User user;
 }

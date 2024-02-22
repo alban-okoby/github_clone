@@ -12,6 +12,7 @@ public interface GRepositoryService {
     GRepositoryDTO getRepositoryByUsernameAndRepositoryName(String username, String repositoryName);
     List<GRepositoryDTO> getRepositoriesByUsername(String username);
     GRepositoryDTO createRepository(GRepositoryDTO repositoryDTO, Long userId);
+    GRepositoryDTO createRepository(GRepositoryDTO repositoryDTO);
     GRepositoryDTO updateRepository(Long id, GRepositoryDTO repositoryDTO);
     void deleteRepository(Long id);
 }

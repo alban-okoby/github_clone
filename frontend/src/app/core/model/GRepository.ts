@@ -5,5 +5,6 @@ export class GRepository {
   repositoryName!: string;
   repositoryDescription!: string;
   visibility!: boolean;
+  user_id!: any;
   user!: UserModel;
 }

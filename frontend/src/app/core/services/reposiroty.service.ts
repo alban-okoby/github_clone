@@ -16,7 +16,10 @@ export class ReposirotyService {
   getRepositoryListByUsername(username: string) {
     return this.http.get(`${this.API_URL}/${username}`, {headers: environment.headers} )
   }
-  createRepository(repository: GRepository, userId: any) {
+  createRepository(repository: GRepository) {
+    return this.http.post(`${this.API_URL}/`,repository, {headers: environment.headers} )
+  }
+  createRepo(repository: GRepository, userId: any) {
     return this.http.post(`${this.API_URL}/`, {headers: environment.headers} )
   }
 }
