@@ -7,10 +7,12 @@ import com.digitalsouag.model.GRepository;
 import com.digitalsouag.model.User;
 import com.digitalsouag.repo.GRepositoryRepo;
 import com.digitalsouag.repo.UserRepository;
+import com.digitalsouag.repo.search.GRepoSearchSpecification;
 import com.digitalsouag.service.GRepositoryService;
 import com.digitalsouag.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -92,6 +94,17 @@ public class GRepositoryServiceImpl implements GRepositoryService {
             return convertToDTO(gRepo.save(existingRepo));
         }
         return null;
+    }
+
+    @Override
+    public List<GRepositoryDTO> searchRepository(String term) {
+        Specification<GRepository> findedRepos = GRepoSearchSpecification.search(term);
+        List<GRepository> results = gRepo.findAll(findedRepos);
+
+        List<GRepositoryDTO> findedReposDTO = results.stream()
+                .map((id) -> this.modelMapper.map(id, GRepositoryDTO.class))
+                .collect(Collectors.toList());
+        return findedReposDTO;
     }
 
     @Override

@@ -34,26 +34,21 @@ public class GRepositoryController {
         return new ResponseEntity(repoList, HttpStatus.OK);
     }
 
-    @PostMapping("aa")
-    public ResponseEntity<GRepositoryDTO> createRepository(@RequestBody GRepositoryDTO repositoryDTO, Long userId) {
-        repositoryService.createRepository(repositoryDTO, userId);
-        return new ResponseEntity(repositoryDTO, HttpStatus.CREATED);
-    }
-
     @PostMapping
     public ResponseEntity<GRepositoryDTO> createRepo(@RequestBody GRepositoryDTO repositoryDTO) {
         repositoryService.createRepository(repositoryDTO);
         return new ResponseEntity(repositoryDTO, HttpStatus.CREATED);
     }
-//    @PostMapping("/{userId}")
-//    public GRepositoryDTO createRepository(@RequestBody GRepositoryDTO repositoryDTO, @PathVariable Long userId) {
-//        return repositoryService.createRepository(repositoryDTO, userId);
-//    }
-
 
     @PutMapping("/{id}")
     public GRepositoryDTO updateRepository(@PathVariable Long id, @RequestBody GRepositoryDTO repositoryDTO) {
         return repositoryService.updateRepository(id, repositoryDTO);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<GRepositoryDTO>> searchRepositories(@RequestParam("q") String q) {
+        List<GRepositoryDTO> findedReposList = this.repositoryService.searchRepository(q);
+        return new ResponseEntity(findedReposList, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
