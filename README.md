@@ -1,6 +1,12 @@
 # Github Clone - The MVP
 
 #### Functionalities of this github_clone:
+* Authentification
+* Register
+* Confirm Registration by Email
+* Create Repository
+* List of repositories by username
+* ... in development <\>
 
 
 ## Table of Content
