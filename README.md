@@ -6,6 +6,7 @@
 * Confirm Registration by Email
 * Create Repository
 * List of repositories by username
+* Search repository
 * ... in development <\>
 
 
