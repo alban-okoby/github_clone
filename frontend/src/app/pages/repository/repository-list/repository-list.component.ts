@@ -39,11 +39,7 @@ export class RepositoryListComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((p) => {
       this.userName = p.get('username');
     });
-    // Actually don't works
-    // this.userService.currentUser().subscribe((res) => {
-    //   this.currenUser = res;
-    // });
-
+    
     // List of repository by username
     this.repositoryService
       .getRepositoryListByUsername(this.userName)
@@ -61,9 +57,8 @@ export class RepositoryListComponent implements OnInit {
             this.userName === this.owner.user.username &&
             this.userName === localStorage.getItem('c_uN')
           ) {
-            
-            this.repositoriesWithOwner = this.allRepositoryWithOwner;
             this.isConnected = true;
+            this.repositoriesWithOwner = this.allRepositoryWithOwner;
           } else {
             this.repositoriesWithOwner = this.allRepositoryWithOwner.filter(
               (r) => r.visibility === true
@@ -84,12 +79,25 @@ export class RepositoryListComponent implements OnInit {
             this.repositoriesWithOwner = r; // this line
             if (this.searchRepositoryResults.length === 0) {
             } else {
-              this.repositoriesWithOwner = this.searchRepositoryResults.filter(repo =>
-                repo.repositoryName.toLowerCase().includes(this.searchKeyword.toLowerCase())
+              this.repositoriesWithOwner = this.searchRepositoryResults.filter(
+                (repo) =>
+                  repo.repositoryName
+                    .toLowerCase()
+                    .includes(this.searchKeyword.toLowerCase())
               );
             }
           });
       }, 200);
+    } else {
+      this.repositoriesWithOwner = this.allRepositoryWithOwner;
+    }
+  }
+
+  filterRepositoryByType(type: string) {
+    if (type === 'true') {
+      this.repositoriesWithOwner = this.repositoriesWithOwner.filter(repo => repo.visibility == true);
+    } else if (type === 'false') {
+      this.repositoriesWithOwner = this.repositoriesWithOwner.filter(repo => repo.visibility == false);
     } else {
       this.repositoriesWithOwner = this.allRepositoryWithOwner;
     }

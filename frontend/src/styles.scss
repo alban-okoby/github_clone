@@ -3,7 +3,11 @@
 @import url(./assets/layout/index.scss);
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
 .cursor-pointer {
   cursor: pointer !important;
@@ -24,7 +28,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 // NOT FOUND
-body{margin-top:20px;}
 .cover-background {
     position: relative !important;
     background-size: cover !important;
