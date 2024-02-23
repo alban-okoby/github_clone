@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -80,6 +81,8 @@ public class GRepositoryServiceImpl implements GRepositoryService {
         User user = userRepository.findById(repositoryDTO.getUser_id()).get();
         UserDTO userInfo = userToDTO(user);
         repositoryDTO.setUser_id(userInfo.getId());
+        repositoryDTO.setRepositoryName(repositoryDTO.getRepositoryName().replaceAll("\\s+", "-"));
+        repositoryDTO.setCreatedAt(new Date());
         GRepository entity = convertToEntity(repositoryDTO);
         return convertToDTO(gRepo.save(entity));
     }
@@ -91,6 +94,7 @@ public class GRepositoryServiceImpl implements GRepositoryService {
             existingRepo.setRepositoryName(repositoryDTO.getRepositoryName());
             existingRepo.setRepositoryDescription(repositoryDTO.getRepositoryDescription());
             existingRepo.setVisibility(repositoryDTO.isVisibility());
+            existingRepo.setUpdatedAt(new Date());
             return convertToDTO(gRepo.save(existingRepo));
         }
         return null;

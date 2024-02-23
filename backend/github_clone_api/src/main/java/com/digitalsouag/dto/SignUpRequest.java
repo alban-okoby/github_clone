@@ -8,6 +8,7 @@ import com.digitalsouag.validator.PasswordMatches;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.UniqueElements;
 
 @Data
 @PasswordMatches
@@ -16,7 +17,6 @@ import lombok.NoArgsConstructor;
 public class SignUpRequest {
 
 	private Long userID;
-
 	private String providerUserId;
 
 	@NotEmpty
@@ -24,8 +24,11 @@ public class SignUpRequest {
 
 	@NotEmpty
 	private String email;
-	
+
+	@NotEmpty
+	@UniqueElements
 	private String username;
+	private String about;
 
 	private SocialProvider socialProvider;
 
@@ -53,7 +56,7 @@ public class SignUpRequest {
 		this.matchingPassword = matchingPassword;
 	}
 
-	public SignUpRequest(String providerUserID, String displayName, String email, String username, String password, String matchingPassword, SocialProvider socialProvider) {
+	public SignUpRequest(String providerUserID, String displayName, String about, String email, String username, String password, String matchingPassword, SocialProvider socialProvider) {
 	}
 
 	public static Builder getBuilder() {
@@ -63,7 +66,7 @@ public class SignUpRequest {
 	public static class Builder {
 		private String providerUserID;
 		private String displayName;
-		private String username;
+		private String about;
 		private String email;
 		private String password;
 		private String matchingPassword;
@@ -100,7 +103,7 @@ public class SignUpRequest {
 		}
 
 		public SignUpRequest build() {
-			return new SignUpRequest(providerUserID, displayName, email, username, password, matchingPassword, socialProvider);
+			return new SignUpRequest(providerUserID, displayName, email, password, matchingPassword, socialProvider);
 		}
 
 	}

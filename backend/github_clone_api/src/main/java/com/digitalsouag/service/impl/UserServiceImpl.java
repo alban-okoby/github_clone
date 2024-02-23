@@ -69,6 +69,7 @@ public class UserServiceImpl implements UserService {
 		Date now = Calendar.getInstance().getTime();
 		user.setCreatedDate(now);
 		user.setModifiedDate(now);
+		user.setAbout(signUpRequest.getAbout());
 		user = userRepository.save(user);
 		userRepository.flush();
 		return user;

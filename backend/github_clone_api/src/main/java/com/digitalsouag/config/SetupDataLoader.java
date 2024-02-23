@@ -51,7 +51,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 		if (user == null) {
 			user = new User();
 			user.setDisplayName("John Doe");
+			user.setAbout("I am one among millions of software geniuses on the planet. I make the smooth web, enjoyable, fast and useful.");
 			user.setEmail(email);
+			user.setUsername("joed");
 			user.setPassword(passwordEncoder.encode("admin@1234"));
 			user.setRoles(roles);
 			user.setProvider(SocialProvider.LOCAL.getProviderType());

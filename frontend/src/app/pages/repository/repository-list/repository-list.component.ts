@@ -75,7 +75,7 @@ export class RepositoryListComponent implements OnInit {
   }
 
   searchReposities() {
-    if (this.searchKeyword.trim() !== '') {
+    if (this.searchKeyword.trim() !== '' && ' ') {
       setTimeout(() => {
         this.repositoryService
           .searchRepository(this.searchKeyword)

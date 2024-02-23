@@ -29,6 +29,9 @@ public class User implements Serializable {
 
 	private String email;
 	private String username;
+	private String about;
+	private Date registeredAt;
+	private Date updatedAt;
 
 	@Column(name = "enabled", columnDefinition = "BIT", length = 1)
 	private boolean enabled;

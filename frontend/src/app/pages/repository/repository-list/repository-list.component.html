@@ -2,18 +2,15 @@
 
   <div class="container mt-5">
     <div class="row">
-      <div class="profile col-lg-3">
+      <div class="profile col-lg-3" style="height: 100vh;">
         <img src="https://via.placeholder.com/150" alt="Profile Picture" class="img-fluid">
         <div class="profile-name">{{owner.user.displayName}}</div>
         <div>{{owner.user.username}}</div>
         <div class="profile-description mt-4">Enthusiast Software Developer, who makes the web fast, pleasant and useful
         </div>
-        <a href="javascript:void(0)" class="edit-profile">Edit Profile</a>
+        <a href="javascript:void(0)" class="edit-profile">Edit</a>
       </div>
 
-      <!-- <ul>
-        <li (change)="searchReposities()" *ngFor="let r of searchRepositoryResults"> {{ r.repositoryName }} </li>
-      </ul> -->
       <div class="col-lg-9">
         <div class="col-lg-12 mb-3">
           <div class="row">

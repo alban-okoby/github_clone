@@ -3,6 +3,8 @@ package com.digitalsouag.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,6 +17,9 @@ public class GRepository {
     private String repositoryName;
     private String repositoryDescription;
     private boolean visibility;
+    private Date createdAt;
+    private Date updatedAt;
+//    private List<String> tags;
     private Long user_id;
 
     @ManyToOne

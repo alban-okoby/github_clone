@@ -7,6 +7,5 @@ public class UserAlreadyExistAuthenticationException extends AuthenticationExcep
 
 	public UserAlreadyExistAuthenticationException(final String msg) {
         super(msg);
-    }
-
+    };
 }

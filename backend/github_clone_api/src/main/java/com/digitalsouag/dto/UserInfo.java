@@ -6,6 +6,6 @@ import lombok.Value;
 
 @Value
 public class UserInfo {
-	private String id, displayName, email, username;
+	private String id, displayName, email, username, about;
 	private List<String> roles;
 }

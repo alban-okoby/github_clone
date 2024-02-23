@@ -99,15 +99,14 @@ public class AuthController {
 			mailService.sendVerificationToken(token, user);
 			if (signUpRequest.isUsing2FA()) {
 				QrData data = qrDataFactory.newBuilder().label(user.getEmail()).secret(user.getSecret()).issuer("John").build();
-				// Generate the QR code image data as a base64 string which can
-				// be used in an <img> tag:
 				String qrCodeImage = getDataUriForImage(qrGenerator.generate(data), qrGenerator.getImageMimeType());
 				return ResponseEntity.ok().body(new SignUpResponse(true, qrCodeImage));
 			}
 		} catch (UserAlreadyExistAuthenticationException e) {
 			log.error("Exception Ocurred", e);
 			return new ResponseEntity<>(new ApiResponse(false, "Email Address already in use!"), HttpStatus.BAD_REQUEST);
-		} catch (QrGenerationException e) {
+		}
+		catch (QrGenerationException e) {
 			log.error("QR Generation Exception Ocurred", e);
 			return new ResponseEntity<>(new ApiResponse(false, "Unable to generate QR code!"), HttpStatus.BAD_REQUEST);
 		}
