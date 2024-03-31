@@ -52,7 +52,7 @@ By default the api will automaticaly create Credentials to login:
 No known bugs at this time. 
 
 ## Authors
-Alban Okoby - [Github](https://github.com/alban-okoby)  | [Linkedln](linkedin.com/in/alban-okoby-software-developer) | [Twitter](https://twitter.com/AlbanOkoby)
+Alban Okoby - [Github](https://github.com/alban-okoby)  | [Linkedln](https://linkedin.com/in/alban-okoby-software-developer) | [Twitter](https://twitter.com/AlbanOkoby)
 
 ## License
 Public Domain. No copy write protection. 
