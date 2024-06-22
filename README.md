@@ -7,14 +7,13 @@
 * Create Repository
 * List of repositories by username
 * Search repository
-* ... in development <\>
-
+* ...
 
 ## Table of Content
 * [Environment](#environment)
 * [Technologies](#technologies)
 * [Installation](#installation)
-* [File Descriptions](#file-descriptions)
+* [Demo](#demo)
 * [Examples of use](#examples-of-use)
 * [Bugs](#bugs)
 * [Authors](#authors)
@@ -43,16 +42,37 @@ This project can run anywhere
   * Install dependancies : `mvn install package` or `mvn clean install`
   * Run api with `java -jar target/github-clone-1.1.0.jar`
 
-## File Descriptions
 ## Examples of use
 By default the api will automaticaly create Credentials to login:
   - "email": `admin@github-clone.com`,
   - "password": `admin@1234`
+## Demo
+#### Home Page (Guest)
+ <img src="https://github.com/alban-okoby/github_clone/blob/main/assets/images/demo/guest_page.png" />
+ 
+#### Registration Page
+ <img src="https://github.com/alban-okoby/github_clone/blob/main/assets/images/demo/signup_page.png" />
+ 
+#### Email confirmation to activate ✅ account 
+ <img src="https://github.com/alban-okoby/github_clone/blob/main/assets/images/demo/mail.PNG" />
+ 
+#### Login
+  <img src="https://github.com/alban-okoby/github_clone/blob/main/assets/images/demo/login_page.png" />
+  
+#### Connected User Page
+  <img src="https://github.com/alban-okoby/github_clone/blob/main/assets/images/demo/user_connected_page.PNG" />
+  
+#### Repositories list
+<img src="https://github.com/alban-okoby/github_clone/blob/main/assets/images/demo/list_repository.png" />
+
+#### New repository 
+<img src="https://github.com/alban-okoby/github_clone/blob/main/assets/images/demo/new_repository.png" />
+
 ## Bugs
 No known bugs at this time. 
 
 ## Authors
-Alban Okoby - [Github](https://github.com/alban-okoby)  | [Linkedln](https://linkedin.com/in/alban-okoby-software-developer) | [Twitter](https://twitter.com/AlbanOkoby)
+Alban Okoby (cerveauplus) - [Github](https://github.com/alban-okoby)  | [Linkedln](https://linkedin.com/in/alban-okoby-software-developer) | [Twitter](https://twitter.com/AlbanOkoby)
 
 ## License
 Public Domain. No copy write protection. 
